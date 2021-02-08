@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Image, FlatList, ScrollView} from 'react-native';
-import data from './data';
+import styles from './styles';
 
 // 1. Build component
 // 2. Fetch the data
@@ -12,16 +12,15 @@ import data from './data';
 
 const BlogListElement = ({title, featuredImage, content}) => {
   return (
-    <View>
+    <View style={styles.post}>
       <Image
         source={{ uri: featuredImage }}
-        style={{
-          width: 50,
-          height: 50,
-        }}
+        style={styles.postImage}
       />
-      <Text>{title}</Text>
-      <Text>{content}</Text>
+      <View style={styles.postText}>
+        <Text style={styles.postTitle}>{title}</Text>
+        <Text ellipsizeMode={"tail"} numberOfLines={1} style={styles.postDescription}>{content}</Text>
+      </View>
     </View>
   );
 };
