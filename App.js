@@ -1,12 +1,15 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import Article from './src/screens/Article';
+import Routes from './src/navigation/routes';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Article />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

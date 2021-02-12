@@ -19,22 +19,22 @@ const styles = StyleSheet.create({
     height: 75,
   },
   postText: {
-    flex: 1
+    flex: 1,
   },
   postTitle: {
     fontWeight: '500',
     fontSize: 25,
   },
   postDescription: {
-    fontSize: 20
+    fontSize: 20,
   },
   spinner: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: "100%",
-    height: "100%",
-  }
+    width: '100%',
+    height: '100%',
+  },
 });
 
 export default styles;
