@@ -1,4 +1,6 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {useEffect} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Tag from '../../components/Tag';
 
@@ -18,10 +20,16 @@ const mockData = {
 // 3. Display content
 // 4. Style content
 
-const PropertyScreen = (props) => {
-  // const {image, price, address, description} = props.route.params.data;
-  const {featuredImage, title, content, createdAt, tags, likes} = mockData;
-  console.log(props);
+const ArticleScreen = (props) => {
+  const {setOptions} = useNavigation();
+  const {
+    featuredImage,
+    title,
+    content,
+    createdAt,
+    tags,
+    likes,
+  } = props.route.params.data;
 
   function formatDate(date) {
     return new Date(date).toDateString();
@@ -31,6 +39,10 @@ const PropertyScreen = (props) => {
     const totalLikes = articleLikes.length;
     return `${totalLikes} ${totalLikes === 1 ? 'Like' : 'Likes'}`;
   }
+
+  useEffect(() => {
+    setOptions({title});
+  }, [setOptions, title]);
 
   return (
     <>
@@ -43,11 +55,13 @@ const PropertyScreen = (props) => {
         <View>
           <Text style={styles.title}>{title}</Text>
         </View>
-        <View style={styles.tagsWrapper}>
-          {tags.map((it) => (
-            <Tag key={it} label={it} />
-          ))}
-        </View>
+        {tags.length ? (
+          <View style={styles.tagsWrapper}>
+            {tags.map((it) => (
+              <Tag key={it} label={it} />
+            ))}
+          </View>
+        ) : null}
         <View style={styles.articleDetailsWrapper}>
           <Text style={styles.articleDetail}>{formatDate(createdAt)}</Text>
           <Text style={styles.articleDetail}>{formatLikes(likes)}</Text>
@@ -76,7 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   tagsWrapper: {
-    marginVertical: 16,
+    marginTop: 16,
     flexDirection: 'row',
   },
   articleDetail: {
@@ -84,9 +98,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   articleDetailsWrapper: {
+    marginTop: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
 });
 
-export default PropertyScreen;
+export default ArticleScreen;

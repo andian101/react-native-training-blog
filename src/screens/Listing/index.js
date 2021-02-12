@@ -1,7 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Image, FlatList, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  SafeAreaView,
+  Pressable,
+} from 'react-native';
 import styles from './styles';
 import images from '../../assets/images';
+import {useNavigation} from '@react-navigation/native';
+import {screenTypes} from '../../navigation/constants';
 
 // 1. Build component
 // 2. Fetch the data
@@ -9,9 +18,9 @@ import images from '../../assets/images';
 // 4. Render the data onto the screen
 // 5. Add loading spinner
 
-const BlogListElement = ({title, featuredImage, content, likes}) => {
+const BlogListElement = ({title, featuredImage, likes, content, onPress}) => {
   return (
-    <View style={styles.post}>
+    <Pressable style={styles.post} onPress={onPress}>
       <Image source={{uri: featuredImage}} style={styles.postImage} />
       <View style={styles.postText}>
         <Text style={styles.postTitle}>{title}</Text>
@@ -23,11 +32,13 @@ const BlogListElement = ({title, featuredImage, content, likes}) => {
         </Text>
         <Text style={styles.likes}>Likes: {likes.length}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
 const Listing = () => {
+  const {navigate} = useNavigation();
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -58,7 +69,14 @@ const Listing = () => {
       {!!posts.length && (
         <FlatList
           data={posts}
-          renderItem={({item}) => <BlogListElement {...item} />}
+          renderItem={({item}) => (
+            <BlogListElement
+              {...item}
+              onPress={() => {
+                navigate(screenTypes.article, {data: item});
+              }}
+            />
+          )}
           keyExtractor={(item) => item.id}
         />
       )}
