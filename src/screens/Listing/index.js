@@ -9,9 +9,7 @@ import images from '../../assets/images';
 // 4. Render the data onto the screen
 // 5. Add loading spinner
 
-// {"content": "We need to bypass the auxiliary EXE pixel!", "createdAt": "2021-02-03T21:26:28.632Z", "featuredImage": "http://lorempixel.com/640/480/animals", "id": "1", "likes": [{"blogId": "1", "createdAt": 1612431246, "id": "1", "userId": 17}], "tags": [], "title": "District Communications Planner", "userId": 99}
-
-const BlogListElement = ({title, featuredImage, content}) => {
+const BlogListElement = ({title, featuredImage, content, likes}) => {
   return (
     <View style={styles.post}>
       <Image source={{uri: featuredImage}} style={styles.postImage} />
@@ -23,6 +21,7 @@ const BlogListElement = ({title, featuredImage, content}) => {
           style={styles.postDescription}>
           {content}
         </Text>
+        <Text style={styles.likes}>Likes: {likes.length}</Text>
       </View>
     </View>
   );
