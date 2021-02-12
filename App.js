@@ -1,11 +1,11 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import Listing from './src/screens/Listing';
+import {SafeAreaView} from 'react-native';
+import Article from './src/screens/Article';
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Listing />
+      <Article />
     </SafeAreaView>
   );
 };
