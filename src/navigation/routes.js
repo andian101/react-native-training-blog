@@ -10,7 +10,7 @@ const Routes = () => {
   return (
     <AppStack.Navigator>
       <AppStack.Screen
-        options={{title: 'Blog', headerShown: false}}
+        options={{title: 'Blog'}}
         name={screenTypes.listing}
         component={Listing}
       />
