@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
   postText: {
     flex: 1,
-    borderBottomColor: "#a0a0a0",
+    borderBottomColor: '#a0a0a0',
     paddingBottom: 10,
     borderBottomWidth: 1,
   },
@@ -36,6 +36,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '100%',
+  },
+  addPostBtn: {
+    marginRight: 20,
+  },
+  addPostBtnLabel: {
+    fontSize: 18,
+    color: '#3786de',
   },
 });
 

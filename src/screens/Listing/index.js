@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import {
   View,
   Text,
@@ -37,8 +37,7 @@ const BlogListElement = ({title, featuredImage, likes, content, onPress}) => {
 };
 
 const Listing = () => {
-  const {navigate} = useNavigation();
-
+  const {navigate, setOptions} = useNavigation();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -58,6 +57,18 @@ const Listing = () => {
 
     fetchData();
   }, []);
+
+  useLayoutEffect(() => {
+    setOptions({
+      headerRight: () => (
+        <Pressable
+          style={styles.addPostBtn}
+          onPress={() => navigate(screenTypes.createArticle)}>
+          <Text style={styles.addPostBtnLabel}>Add</Text>
+        </Pressable>
+      ),
+    });
+  }, [setOptions, navigate]);
 
   return (
     <SafeAreaView>
