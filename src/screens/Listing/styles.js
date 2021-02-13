@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   post: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
   postText: {
     flex: 1,
-    borderBottomColor: "#a0a0a0",
+    borderBottomColor: '#a0a0a0',
     paddingBottom: 10,
     borderBottomWidth: 1,
   },

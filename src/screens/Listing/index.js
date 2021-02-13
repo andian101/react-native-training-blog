@@ -1,17 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import {
-  View,
-  Text,
-  Image,
   FlatList,
-  SafeAreaView,
+  Image,
   Pressable,
+  SafeAreaView,
+  Text,
+  View,
 } from 'react-native';
-import styles from './styles';
 import images from '../../assets/images';
-import { useNavigation } from '@react-navigation/native';
-import { screenTypes } from '../../navigation/constants';
 import { useMainContext } from '../../context';
+import { screenTypes } from '../../navigation/constants';
+import styles from './styles';
 
 // 1. Build component
 // 2. Fetch the data
@@ -60,7 +60,7 @@ const Listing = () => {
     };
 
     fetchData();
-  }, []);
+  }, [setPosts]);
 
   return (
     <SafeAreaView>
