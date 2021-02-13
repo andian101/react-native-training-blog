@@ -47,7 +47,7 @@ export default function AddPost() {
 
     if (response.ok) {
       const newArticle = await response.json();
-      addPost({ ...newArticle, likes: [] });
+      addPost(newArticle);
       return goBack();
     }
 

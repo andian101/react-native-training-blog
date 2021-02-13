@@ -15,7 +15,14 @@ export const reducer = (state, action) => {
     case ADD_POST:
       return {
         ...state,
-        posts: [...state.posts, action.post],
+        posts: [
+          ...state.posts,
+          {
+            ...action.post,
+            featuredImage: 'https://placeimg.com/640/480/any',
+            likes: [],
+          },
+        ],
       };
     default:
       return state;
