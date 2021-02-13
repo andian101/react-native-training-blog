@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 import styles from './styles';
 import images from '../../assets/images';
-import {useNavigation} from '@react-navigation/native';
-import {screenTypes} from '../../navigation/constants';
-import {useMainContext} from '../../context';
+import { useNavigation } from '@react-navigation/native';
+import { screenTypes } from '../../navigation/constants';
+import { useMainContext } from '../../context';
 
 // 1. Build component
 // 2. Fetch the data
@@ -19,10 +19,10 @@ import {useMainContext} from '../../context';
 // 4. Render the data onto the screen
 // 5. Add loading spinner
 
-const BlogListElement = ({title, featuredImage, likes, content, onPress}) => {
+const BlogListElement = ({ title, featuredImage, likes, content, onPress }) => {
   return (
     <Pressable style={styles.post} onPress={onPress}>
-      <Image source={{uri: featuredImage}} style={styles.postImage} />
+      <Image source={{ uri: featuredImage }} style={styles.postImage} />
       <View style={styles.postText}>
         <Text style={styles.postTitle}>{title}</Text>
         <Text
@@ -38,10 +38,10 @@ const BlogListElement = ({title, featuredImage, likes, content, onPress}) => {
 };
 
 const Listing = () => {
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
   const {
-    state: {posts},
-    actions: {setPosts},
+    state: { posts },
+    actions: { setPosts },
   } = useMainContext();
 
   useEffect(() => {
@@ -66,17 +66,17 @@ const Listing = () => {
     <SafeAreaView>
       {!posts.length && (
         <View style={styles.spinner}>
-          <Image source={images.spinner} style={{width: 100, height: 100}} />
+          <Image source={images.spinner} style={{ width: 100, height: 100 }} />
         </View>
       )}
       {!!posts.length && (
         <FlatList
           data={posts}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <BlogListElement
               {...item}
               onPress={() => {
-                navigate(screenTypes.article, {data: item});
+                navigate(screenTypes.article, { data: item });
               }}
             />
           )}
