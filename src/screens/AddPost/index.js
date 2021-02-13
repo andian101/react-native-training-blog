@@ -1,12 +1,18 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useLayoutEffect, useCallback} from 'react';
-import {StyleSheet, Text, TextInput, ScrollView, Pressable} from 'react-native';
-import {useMainContext} from '../../context';
+import { useNavigation } from '@react-navigation/native';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+} from 'react-native';
+import { useMainContext } from '../../context';
 
 export default function AddPost() {
-  const {setOptions, goBack} = useNavigation();
+  const { setOptions, goBack } = useNavigation();
   const {
-    actions: {addPost},
+    actions: { addPost },
   } = useMainContext();
 
   const [title, setTitle] = useState('');
@@ -41,7 +47,7 @@ export default function AddPost() {
 
     if (response.ok) {
       const newArticle = await response.json();
-      addPost({...newArticle, likes: []});
+      addPost({ ...newArticle, likes: [] });
       return goBack();
     }
 
@@ -52,7 +58,7 @@ export default function AddPost() {
     () => (
       <Pressable
         style={styles.actionBtn}
-        onPress={() => saveArticle({title, content, tags})}>
+        onPress={() => saveArticle({ title, content, tags })}>
         <Text style={styles.actionBtnLabel}>Save</Text>
       </Pressable>
     ),
