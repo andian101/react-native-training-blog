@@ -89,6 +89,7 @@ export default function AddPost() {
         style={[styles.inputField, styles.inputFieldBase]}
         placeholder="Add catchy title"
         value={title}
+        autoCompleteType={'off'}
         onChangeText={(text) => setTitle(text)}
         returnKeyType="done"
       />
@@ -96,8 +97,8 @@ export default function AddPost() {
         style={[styles.inputField, styles.inputFieldBase]}
         placeholder="Add tags, comma separated"
         value={tags}
-        autoCapitalize={false}
-        autoCompleteType={false}
+        autoCapitalize={'none'}
+        autoCompleteType={'off'}
         onChangeText={(text) => setTags(text)}
         returnKeyType="done"
       />

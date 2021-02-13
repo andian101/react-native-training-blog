@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import {
   FlatList,
   Image,
@@ -39,7 +39,6 @@ const BlogListElement = ({ title, featuredImage, likes, content, onPress }) => {
 
 const Listing = () => {
   const { navigate, setOptions } = useNavigation();
-  const [posts, setPosts] = useState([]);
   const {
     state: { posts },
     actions: { setPosts },
