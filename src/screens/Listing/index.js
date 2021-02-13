@@ -11,6 +11,7 @@ import styles from './styles';
 import images from '../../assets/images';
 import {useNavigation} from '@react-navigation/native';
 import {screenTypes} from '../../navigation/constants';
+import {useMainContext} from '../../context';
 
 // 1. Build component
 // 2. Fetch the data
@@ -38,8 +39,10 @@ const BlogListElement = ({title, featuredImage, likes, content, onPress}) => {
 
 const Listing = () => {
   const {navigate} = useNavigation();
-
-  const [posts, setPosts] = useState([]);
+  const {
+    state: {posts},
+    actions: {setPosts},
+  } = useMainContext();
 
   useEffect(() => {
     const fetchData = async () => {
