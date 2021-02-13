@@ -1,5 +1,5 @@
 const images = {
-    spinner: require('./loading.gif')
-}
+  spinner: require('./loading.gif'),
+};
 
 export default images;

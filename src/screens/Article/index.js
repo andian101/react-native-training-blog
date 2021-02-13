@@ -1,7 +1,7 @@
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {useEffect} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import { useEffect } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import Tag from '../../components/Tag';
 
 const mockData = {
@@ -12,7 +12,7 @@ const mockData = {
   tags: ['javascript', 'webdev'],
   userId: 99,
   featuredImage: 'https://placeimg.com/640/480/any',
-  likes: [{id: '1', blogId: '1', createdAt: 1612431246, userId: 17}],
+  likes: [{ id: '1', blogId: '1', createdAt: 1612431246, userId: 17 }],
 };
 
 // 1. Get data from props
@@ -21,7 +21,7 @@ const mockData = {
 // 4. Style content
 
 const ArticleScreen = (props) => {
-  const {setOptions} = useNavigation();
+  const { setOptions } = useNavigation();
   const {
     featuredImage,
     title,
@@ -41,13 +41,13 @@ const ArticleScreen = (props) => {
   }
 
   useEffect(() => {
-    setOptions({title});
+    setOptions({ title });
   }, [setOptions, title]);
 
   return (
     <>
       <Image
-        source={{uri: featuredImage}}
+        source={{ uri: featuredImage }}
         resizeMode="contain"
         style={styles.image}
       />

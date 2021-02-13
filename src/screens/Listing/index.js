@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  SafeAreaView,
-  Pressable,
-} from 'react-native';
-import styles from './styles';
-import images from '../../assets/images';
 import { useNavigation } from '@react-navigation/native';
-import { screenTypes } from '../../navigation/constants';
+import React, { useEffect, useLayoutEffect } from 'react';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  SafeAreaView,
+  Text,
+  View,
+} from 'react-native';
+import images from '../../assets/images';
 import { useMainContext } from '../../context';
+import { screenTypes } from '../../navigation/constants';
+import styles from './styles';
 
 // 1. Build component
 // 2. Fetch the data
@@ -38,7 +38,7 @@ const BlogListElement = ({ title, featuredImage, likes, content, onPress }) => {
 };
 
 const Listing = () => {
-  const { navigate } = useNavigation();
+  const { navigate, setOptions } = useNavigation();
   const {
     state: { posts },
     actions: { setPosts },
@@ -60,7 +60,19 @@ const Listing = () => {
     };
 
     fetchData();
-  }, []);
+  }, [setPosts]);
+
+  useLayoutEffect(() => {
+    setOptions({
+      headerRight: () => (
+        <Pressable
+          style={styles.addPostBtn}
+          onPress={() => navigate(screenTypes.createArticle)}>
+          <Text style={styles.addPostBtnLabel}>Add</Text>
+        </Pressable>
+      ),
+    });
+  }, [setOptions, navigate]);
 
   return (
     <SafeAreaView>

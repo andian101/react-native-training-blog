@@ -1,5 +1,6 @@
 export const SET_POSTS = 'SET_POSTS';
 export const SET_USER = 'SET_USER';
+export const ADD_POST = 'ADD_POST';
 
 export const initialState = {
   posts: [],
@@ -17,6 +18,18 @@ export const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [
+          ...state.posts,
+          {
+            ...action.post,
+            featuredImage: 'https://placeimg.com/640/480/any',
+            likes: [],
+          },
+        ],
       };
     default:
       return state;

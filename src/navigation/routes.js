@@ -1,31 +1,50 @@
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import Listing from '../screens/Listing';
+import AddPost from '../screens/AddPost';
 import Article from '../screens/Article';
+import Listing from '../screens/Listing';
 import Login from '../screens/Login';
-import {screenTypes} from './constants';
+import { screenTypes } from './constants';
 
-const AppStack = createStackNavigator();
+const RootStack = createStackNavigator();
+const MainStack = createStackNavigator();
 
-const Routes = () => {
+const MainStackScreen = () => {
   return (
-    <AppStack.Navigator>
-      <AppStack.Screen
-        options={{headerShown: false}}
+    <MainStack.Navigator>
+      <MainStack.Screen
+        options={{ headerShown: false }}
         name={screenTypes.login}
         component={Login}
       />
-      <AppStack.Screen
-        options={{title: 'Blog'}}
+      <MainStack.Screen
+        options={{ title: 'Blog' }}
         name={screenTypes.listing}
         component={Listing}
       />
-      <AppStack.Screen
-        options={{title: 'Articles'}}
+      <MainStack.Screen
+        options={{ title: 'Articles' }}
         name={screenTypes.article}
         component={Article}
       />
-    </AppStack.Navigator>
+    </MainStack.Navigator>
+  );
+};
+
+const Routes = () => {
+  return (
+    <RootStack.Navigator mode="modal">
+      <RootStack.Screen
+        options={{ headerShown: false }}
+        name={'Blog'}
+        component={MainStackScreen}
+      />
+      <RootStack.Screen
+        options={{ title: 'Create Post' }}
+        name={screenTypes.createArticle}
+        component={AddPost}
+      />
+    </RootStack.Navigator>
   );
 };
 
