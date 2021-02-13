@@ -1,4 +1,5 @@
-import {SET_POSTS} from './reducer';
+import { SET_POSTS } from './reducer';
+import { SET_USER } from './reducer';
 
 export const useActions = (dispatch) => {
   const setPosts = (posts) => {
@@ -8,7 +9,15 @@ export const useActions = (dispatch) => {
     });
   };
 
+  const setUser = (user) => {
+    dispatch({
+      type: SET_USER,
+      user,
+    });
+  };
+
   return {
     setPosts,
+    setUser,
   };
 };
