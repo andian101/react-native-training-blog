@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function Tag({label}) {
+export default function Tag({ label }) {
   if (!label) {
     return null;
   }

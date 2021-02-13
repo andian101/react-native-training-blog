@@ -60,7 +60,7 @@ const Listing = () => {
     };
 
     fetchData();
-  }, []);
+  }, [setPosts]);
 
   useLayoutEffect(() => {
     setOptions({
