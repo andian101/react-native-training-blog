@@ -4,17 +4,6 @@ import {useEffect} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Tag from '../../components/Tag';
 
-const mockData = {
-  id: '1',
-  createdAt: '2021-02-03T21:26:28.632Z',
-  title: 'District Communications Planner',
-  content: 'We need to bypass the auxiliary EXE pixel!',
-  tags: ['javascript', 'webdev'],
-  userId: 99,
-  featuredImage: 'https://placeimg.com/640/480/any',
-  likes: [{id: '1', blogId: '1', createdAt: 1612431246, userId: 17}],
-};
-
 // 1. Get data from props
 // 2. Build component
 // 3. Display content
