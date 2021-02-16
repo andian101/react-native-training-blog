@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import Tag from '../../components/Tag';
+import styles from './styles';
 
 // 1. Get data from props
 // 2. Build component
@@ -59,37 +60,5 @@ const ArticleScreen = (props) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    width: '100%',
-    height: 320,
-    marginBottom: 10,
-  },
-  container: {
-    marginHorizontal: 15,
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  content: {
-    marginTop: 30,
-    fontSize: 20,
-  },
-  tagsWrapper: {
-    marginTop: 16,
-    flexDirection: 'row',
-  },
-  articleDetail: {
-    color: '#64707d',
-    fontSize: 17,
-  },
-  articleDetailsWrapper: {
-    marginTop: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});
 
 export default ArticleScreen;
