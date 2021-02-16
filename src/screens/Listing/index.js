@@ -24,7 +24,7 @@ const Listing = () => {
   const { navigate, setOptions } = useNavigation();
   const {
     state: { posts },
-    actions: { setPosts },
+    actions: { setPosts, likePost },
   } = useMainContext();
 
   useEffect(() => {
@@ -65,6 +65,9 @@ const Listing = () => {
           renderItem={({ item }) => (
             <BlogListElement
               {...item}
+              onLike={() => {
+                likePost(item.id);
+              }}
               onPress={() => {
                 navigate(screenTypes.article, { data: item });
               }}

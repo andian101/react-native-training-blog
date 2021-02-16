@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { StackActions } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
 import {
-  View,
+  Alert,
+  Button,
+  KeyboardAvoidingView,
+  SafeAreaView,
   Text,
   TextInput,
-  Button,
-  SafeAreaView,
-  Alert,
-  KeyboardAvoidingView,
+  View,
 } from 'react-native';
-import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
 import { useMainContext } from '../../context';
 import { screenTypes } from '../../navigation/constants';
+import styles from './styles';
 
 const Listing = () => {
   const navigation = useNavigation();
@@ -30,7 +29,7 @@ const Listing = () => {
     const result = resp.find((f) => f.email === email);
 
     if (result?.email) {
-      setUser(result.email);
+      setUser(result);
       return navigation.dispatch(StackActions.replace(screenTypes.listing, {}));
     }
 

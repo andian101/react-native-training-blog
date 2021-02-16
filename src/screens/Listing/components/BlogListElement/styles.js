@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   post: {
@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
   },
   postDescription: {
     fontSize: 20,
+  },
+  postLikeWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
