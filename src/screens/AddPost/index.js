@@ -1,13 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-} from 'react-native';
+import { Pressable, ScrollView, Text, TextInput } from 'react-native';
 import { useMainContext } from '../../context';
+import styles from './styles';
 
 export default function AddPost() {
   const { setOptions, goBack } = useNavigation();
@@ -114,33 +109,3 @@ export default function AddPost() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 20,
-  },
-  screenTitle: {
-    fontSize: 30,
-    marginBottom: 20,
-  },
-  inputFieldBase: {
-    fontSize: 18,
-    marginTop: 20,
-    padding: 10,
-  },
-  inputField: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-  },
-  actionBtn: {
-    marginHorizontal: 20,
-  },
-  actionBtnLabel: {
-    fontSize: 18,
-    color: '#3786de',
-  },
-  errorMsg: {
-    fontSize: 16,
-    color: '#c20a0a',
-  },
-});
