@@ -26,7 +26,6 @@ export const reducer = (state, action) => {
           ...state.posts,
           {
             ...action.post,
-            featuredImage: 'https://placeimg.com/640/480/any',
             likes: [],
           },
         ],

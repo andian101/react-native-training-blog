@@ -11,6 +11,7 @@ import {
 import images from '../../assets/images';
 import { useMainContext } from '../../context';
 import { screenTypes } from '../../navigation/constants';
+import BlogListElement from './components/BlogListElement';
 import styles from './styles';
 
 // 1. Build component
@@ -18,24 +19,6 @@ import styles from './styles';
 // 3. Pass the data into state
 // 4. Render the data onto the screen
 // 5. Add loading spinner
-
-const BlogListElement = ({ title, featuredImage, likes, content, onPress }) => {
-  return (
-    <Pressable style={styles.post} onPress={onPress}>
-      <Image source={{ uri: featuredImage }} style={styles.postImage} />
-      <View style={styles.postText}>
-        <Text style={styles.postTitle}>{title}</Text>
-        <Text
-          ellipsizeMode={'tail'}
-          numberOfLines={1}
-          style={styles.postDescription}>
-          {content}
-        </Text>
-        <Text style={styles.likes}>Likes: {likes.length}</Text>
-      </View>
-    </Pressable>
-  );
-};
 
 const Listing = () => {
   const { navigate, setOptions } = useNavigation();
@@ -50,12 +33,7 @@ const Listing = () => {
         await fetch('https://5f843a3c6b97440016f4f2dc.mockapi.io/blogs')
       ).json();
       setTimeout(() => {
-        setPosts(
-          posts.items.map((item) => {
-            item.featuredImage = 'https://placeimg.com/640/480/any';
-            return item;
-          }),
-        );
+        setPosts(posts.items);
       }, 1000);
     };
 
