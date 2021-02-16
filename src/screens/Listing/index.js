@@ -36,12 +36,7 @@ const Listing = () => {
         await fetch('https://5f843a3c6b97440016f4f2dc.mockapi.io/blogs')
       ).json();
       setTimeout(() => {
-        setPosts(
-          posts.items.map((item) => {
-            item.featuredImage = 'https://placeimg.com/640/480/any';
-            return item;
-          }),
-        );
+        setPosts(posts.items);
       }, 1000);
     };
 
