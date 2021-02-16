@@ -1,40 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  SafeAreaView,
-  Pressable,
-} from 'react-native';
+import {View, Image, FlatList, SafeAreaView} from 'react-native';
 import styles from './styles';
 import images from '../../assets/images';
 import {useNavigation} from '@react-navigation/native';
 import {screenTypes} from '../../navigation/constants';
+import BlogListElement from './components/BlogListElement';
 
 // 1. Build component
 // 2. Fetch the data
 // 3. Pass the data into state
 // 4. Render the data onto the screen
 // 5. Add loading spinner
-
-const BlogListElement = ({title, featuredImage, likes, content, onPress}) => {
-  return (
-    <Pressable style={styles.post} onPress={onPress}>
-      <Image source={{uri: featuredImage}} style={styles.postImage} />
-      <View style={styles.postText}>
-        <Text style={styles.postTitle}>{title}</Text>
-        <Text
-          ellipsizeMode={'tail'}
-          numberOfLines={1}
-          style={styles.postDescription}>
-          {content}
-        </Text>
-        <Text style={styles.likes}>Likes: {likes.length}</Text>
-      </View>
-    </Pressable>
-  );
-};
 
 const Listing = () => {
   const {navigate} = useNavigation();
