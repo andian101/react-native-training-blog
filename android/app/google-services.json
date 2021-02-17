@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "564467717838",
+    "project_id": "rn-course-e0e8a",
+    "storage_bucket": "rn-course-e0e8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564467717838:android:962a191b4de58c3e89629f",
+        "android_client_info": {
+          "package_name": "com.blog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564467717838-0f0qa6gftmdlugl1csr47fj6rhr2dif5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5Qzvj4ey3ppj80ltK6kr-R_E79OnGGOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564467717838-0f0qa6gftmdlugl1csr47fj6rhr2dif5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

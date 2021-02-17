@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { StackActions } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
 import {
-  View,
+  Alert,
+  Button,
+  KeyboardAvoidingView,
+  SafeAreaView,
   Text,
   TextInput,
-  Button,
-  SafeAreaView,
-  Alert,
-  KeyboardAvoidingView,
+  View,
 } from 'react-native';
-import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
 import { useMainContext } from '../../context';
 import { screenTypes } from '../../navigation/constants';
+import NotificationManager from '../../services/NotificationManager';
+import styles from './styles';
 
 const Listing = () => {
   const navigation = useNavigation();
@@ -36,6 +36,14 @@ const Listing = () => {
 
     return Alert.alert('Something went very wrong');
   };
+
+  function triggerNotification() {
+    NotificationManager.scheduleNotification({
+      title: 'My notification title',
+      body: 'My notification body',
+      date: new Date(Date.now() + 5 * 1000), // in 5 secs,
+    });
+  }
 
   return (
     <SafeAreaView>
@@ -67,6 +75,7 @@ const Listing = () => {
             onPress={handleSubmit}
             title="Submit"
           />
+          <Button onPress={triggerNotification} title="Trigger notification" />
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
