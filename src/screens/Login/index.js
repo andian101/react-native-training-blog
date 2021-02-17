@@ -30,7 +30,7 @@ const Listing = () => {
     const result = resp.find((f) => f.email === email);
 
     if (result?.email) {
-      setUser(result.email);
+      setUser(result);
       return navigation.dispatch(StackActions.replace(screenTypes.listing, {}));
     }
 
