@@ -41,6 +41,7 @@ const Listing = () => {
     <SafeAreaView>
       <KeyboardAvoidingView behavior={'height'}>
         <View style={styles.wrapper}>
+          <Text style={styles.title}>Login</Text>
           <Text style={styles.description}>Please login to view the blog.</Text>
           <TextInput
             style={styles.input}
