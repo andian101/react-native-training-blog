@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { StackActions } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
 import {
-  View,
+  Alert,
+  Button,
+  KeyboardAvoidingView,
+  SafeAreaView,
   Text,
   TextInput,
-  Button,
-  SafeAreaView,
-  Alert,
-  KeyboardAvoidingView,
+  View,
 } from 'react-native';
-import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
 import { useMainContext } from '../../context';
 import { screenTypes } from '../../navigation/constants';
+import styles from './styles';
 
 const Listing = () => {
   const navigation = useNavigation();
@@ -43,6 +42,7 @@ const Listing = () => {
         <View style={styles.wrapper}>
           <Text style={styles.description}>Please login to view the blog.</Text>
           <TextInput
+            testID="username"
             style={styles.input}
             onChangeText={(text) => setEmail(text)}
             value={email}
@@ -52,6 +52,7 @@ const Listing = () => {
             autoFocus
           />
           <TextInput
+            testID="password"
             style={styles.input}
             onChangeText={(text) => setPassword(text)}
             value={password}
@@ -63,6 +64,7 @@ const Listing = () => {
             returnKeyType="next"
           />
           <Button
+            testID="submit-button"
             disabled={!email || !password}
             onPress={handleSubmit}
             title="Submit"
