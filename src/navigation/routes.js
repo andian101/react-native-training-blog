@@ -8,16 +8,20 @@ import { screenTypes } from './constants';
 const RootStack = createStackNavigator();
 const MainStack = createStackNavigator();
 
+const sharedOptions = {
+  headerTitleAlign: 'center',
+};
+
 const MainStackScreen = () => {
   return (
     <MainStack.Navigator>
       <MainStack.Screen
-        options={{ title: 'Blog' }}
+        options={{ title: 'Blog', ...sharedOptions }}
         name={screenTypes.listing}
         component={Listing}
       />
       <MainStack.Screen
-        options={{ title: 'Articles' }}
+        options={{ title: 'Articles', ...sharedOptions }}
         name={screenTypes.article}
         component={Article}
       />
@@ -29,12 +33,12 @@ const Routes = () => {
   return (
     <RootStack.Navigator mode="modal">
       <RootStack.Screen
-        options={{ headerShown: false }}
+        options={{ headerShown: false, ...sharedOptions }}
         name={'Blog'}
         component={MainStackScreen}
       />
       <RootStack.Screen
-        options={{ title: 'Create Post' }}
+        options={{ title: 'Create Post', ...sharedOptions }}
         name={screenTypes.createArticle}
         component={AddPost}
       />
