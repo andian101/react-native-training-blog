@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StackActions } from '@react-navigation/native';
+import images from '../../assets/images';
 import {
   View,
   Text,
@@ -8,6 +9,7 @@ import {
   SafeAreaView,
   Alert,
   KeyboardAvoidingView,
+  Image,
 } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -41,6 +43,15 @@ const Listing = () => {
     <SafeAreaView>
       <KeyboardAvoidingView behavior={'height'}>
         <View style={styles.wrapper}>
+          <View style={styles.logo}>
+            <Image
+              source={images.logo}
+              style={{
+                width: 150,
+                height: 150,
+              }}
+            />
+          </View>
           <Text style={styles.title}>Login</Text>
           <Text style={styles.description}>Please login to view the blog.</Text>
           <TextInput
