@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
   },
+  logo: {
+    alignItems: 'center',
+    marginBottom: 50,
+  },
   title: {
     fontSize: 25,
     fontWeight: '600',

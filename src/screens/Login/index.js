@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import {
   Alert,
   Button,
+  Image,
   KeyboardAvoidingView,
   SafeAreaView,
   Text,
   TextInput,
   View,
 } from 'react-native';
+import images from '../../assets/images';
 import { useMainContext } from '../../context';
 import { screenTypes } from '../../navigation/constants';
 import styles from './styles';
@@ -40,6 +42,16 @@ const Listing = () => {
     <SafeAreaView>
       <KeyboardAvoidingView behavior={'height'}>
         <View style={styles.wrapper}>
+          <View style={styles.logo}>
+            <Image
+              source={images.logo}
+              style={{
+                width: 150,
+                height: 150,
+              }}
+            />
+          </View>
+          <Text style={styles.title}>Login</Text>
           <Text style={styles.description}>Please login to view the blog.</Text>
           <TextInput
             style={styles.input}
