@@ -14,11 +14,11 @@ const Listing = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const posts = await (
+      const currentPosts = await (
         await fetch('https://5f843a3c6b97440016f4f2dc.mockapi.io/blogs')
       ).json();
       setTimeout(() => {
-        setPosts(posts.items);
+        setPosts(currentPosts.items);
       }, 1000);
     };
 
