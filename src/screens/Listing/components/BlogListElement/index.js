@@ -3,18 +3,12 @@ import { Image, Pressable, Text, View } from 'react-native';
 import { useMemo } from 'react/cjs/react.development';
 import styles from './styles';
 
-const BlogListElement = ({
-  title,
-  featuredImage,
-  likes,
-  content,
-  onPress,
-  onLike,
-}) => {
+const BlogListElement = ({ item, onPress, onLike }) => {
   const MemoisedElement = useMemo(() => {
+    const { id, title, featuredImage, likes, content } = item;
     console.log('Render list item');
     return (
-      <Pressable style={styles.post} onPress={onPress}>
+      <Pressable style={styles.post} onPress={() => onPress(item)}>
         <Image source={{ uri: featuredImage }} style={styles.postImage} />
         <View style={styles.postText}>
           <Text style={styles.postTitle}>{title}</Text>
@@ -28,7 +22,7 @@ const BlogListElement = ({
             <Text style={styles.likes}>Likes: {likes.length}</Text>
             <Pressable
               onPress={() => {
-                onLike();
+                onLike(id);
                 console.log('Like');
               }}>
               <Text style={styles.likes}>Like</Text>
@@ -37,7 +31,7 @@ const BlogListElement = ({
         </View>
       </Pressable>
     );
-  }, [title, featuredImage, content, likes]);
+  }, [onLike, onPress, item]);
   return MemoisedElement;
 };
 

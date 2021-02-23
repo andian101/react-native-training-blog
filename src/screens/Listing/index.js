@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import {
   FlatList,
   Image,
@@ -52,6 +52,13 @@ const Listing = () => {
     });
   }, [setOptions, navigate]);
 
+  const navigateToArticle = useCallback(
+    (item) => {
+      navigate(screenTypes.article, { data: item });
+    },
+    [navigate],
+  );
+
   return (
     <SafeAreaView>
       {!posts.length && (
@@ -65,12 +72,9 @@ const Listing = () => {
           renderItem={({ item }) => (
             <BlogListElement
               {...item}
-              onLike={() => {
-                likePost(item.id);
-              }}
-              onPress={() => {
-                navigate(screenTypes.article, { data: item });
-              }}
+              item={item}
+              onLike={likePost}
+              onPress={navigateToArticle}
             />
           )}
           keyExtractor={(item) => item.id}
