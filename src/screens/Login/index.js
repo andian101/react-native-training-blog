@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import {
   Alert,
   Button,
+  Image,
   KeyboardAvoidingView,
   SafeAreaView,
   Text,
   TextInput,
   View,
 } from 'react-native';
+import images from '../../assets/images';
 import { useMainContext } from '../../context';
 import { screenTypes } from '../../navigation/constants';
 import styles from './styles';
@@ -19,8 +21,8 @@ const Listing = () => {
     actions: { setUser },
   } = useMainContext();
 
-  const [email, setEmail] = useState('Deja.Littel75@gmail.com');
-  const [password, setPassword] = useState('uOL5osllpnHiQeS');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = async () => {
     const api = `https://5f843a3c6b97440016f4f2dc.mockapi.io/users?search=${email}`;
@@ -40,6 +42,10 @@ const Listing = () => {
     <SafeAreaView>
       <KeyboardAvoidingView behavior={'height'}>
         <View style={styles.wrapper}>
+          <View style={styles.logo}>
+            <Image source={images.logo} style={styles.logoImage} />
+          </View>
+          <Text style={styles.title}>Login</Text>
           <Text style={styles.description}>Please login to view the blog.</Text>
           <TextInput
             testID="username"
@@ -48,6 +54,7 @@ const Listing = () => {
             value={email}
             autoCompleteType={'off'}
             autoCorrect={false}
+            autoCapitalize={'none'}
             placeholder={'email'}
             autoFocus
           />
@@ -58,6 +65,7 @@ const Listing = () => {
             value={password}
             autoCompleteType={'off'}
             autoCorrect={false}
+            autoCapitalize={'none'}
             secureTextEntry={true}
             placeholder={'Password'}
             blurOnSubmit
