@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { StackActions } from '@react-navigation/native';
-import images from '../../assets/images';
+import { StackActions, useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
 import {
-  View,
+  Alert,
+  Button,
+  Image,
+  KeyboardAvoidingView,
+  SafeAreaView,
   Text,
   TextInput,
-  Button,
-  SafeAreaView,
-  Alert,
-  KeyboardAvoidingView,
-  Image,
+  View,
 } from 'react-native';
-import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
+import images from '../../assets/images';
 import { useMainContext } from '../../context';
 import { screenTypes } from '../../navigation/constants';
+import styles from './styles';
 
 const Listing = () => {
   const navigation = useNavigation();
@@ -22,8 +21,8 @@ const Listing = () => {
     actions: { setUser },
   } = useMainContext();
 
-  const [email, setEmail] = useState('Deja.Littel75@gmail.com');
-  const [password, setPassword] = useState('uOL5osllpnHiQeS');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = async () => {
     const api = `https://5f843a3c6b97440016f4f2dc.mockapi.io/users?search=${email}`;
@@ -44,13 +43,7 @@ const Listing = () => {
       <KeyboardAvoidingView behavior={'height'}>
         <View style={styles.wrapper}>
           <View style={styles.logo}>
-            <Image
-              source={images.logo}
-              style={{
-                width: 150,
-                height: 150,
-              }}
-            />
+            <Image source={images.logo} style={styles.logoImage} />
           </View>
           <Text style={styles.title}>Login</Text>
           <Text style={styles.description}>Please login to view the blog.</Text>
@@ -60,6 +53,7 @@ const Listing = () => {
             value={email}
             autoCompleteType={'off'}
             autoCorrect={false}
+            autoCapitalize={'none'}
             placeholder={'email'}
             autoFocus
           />
@@ -69,6 +63,7 @@ const Listing = () => {
             value={password}
             autoCompleteType={'off'}
             autoCorrect={false}
+            autoCapitalize={'none'}
             secureTextEntry={true}
             placeholder={'Password'}
             blurOnSubmit
