@@ -21,8 +21,8 @@ const Listing = () => {
     actions: { setUser },
   } = useMainContext();
 
-  const [email, setEmail] = useState('Deja.Littel75@gmail.com');
-  const [password, setPassword] = useState('uOL5osllpnHiQeS');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = async () => {
     const api = `https://5f843a3c6b97440016f4f2dc.mockapi.io/users?search=${email}`;
@@ -43,37 +43,36 @@ const Listing = () => {
       <KeyboardAvoidingView behavior={'height'}>
         <View style={styles.wrapper}>
           <View style={styles.logo}>
-            <Image
-              source={images.logo}
-              style={{
-                width: 150,
-                height: 150,
-              }}
-            />
+            <Image source={images.logo} style={styles.logoImage} />
           </View>
           <Text style={styles.title}>Login</Text>
           <Text style={styles.description}>Please login to view the blog.</Text>
           <TextInput
+            testID="username"
             style={styles.input}
             onChangeText={(text) => setEmail(text)}
             value={email}
             autoCompleteType={'off'}
             autoCorrect={false}
+            autoCapitalize={'none'}
             placeholder={'email'}
             autoFocus
           />
           <TextInput
+            testID="password"
             style={styles.input}
             onChangeText={(text) => setPassword(text)}
             value={password}
             autoCompleteType={'off'}
             autoCorrect={false}
+            autoCapitalize={'none'}
             secureTextEntry={true}
             placeholder={'Password'}
             blurOnSubmit
             returnKeyType="next"
           />
           <Button
+            testID="submit-button"
             disabled={!email || !password}
             onPress={handleSubmit}
             title="Submit"
